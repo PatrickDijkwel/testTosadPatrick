@@ -40,7 +40,7 @@ public class klantenResource {
 	}
 	
 	@POST
-	@Path("{name}")
+	@Path("add/{name}")
 	public void createKlant(@PathParam("name") String naam) {
 		test.createKlant(naam);
 	}

@@ -23,7 +23,6 @@ public class BusinessRuleResource {
 	@Path("{id}")
 	public String getBusinessRule(@PathParam("id") int id) {
 		BusinessRule br = service.getBusinessRule(id);
-		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		String dataString = sdf.format(br.getDateModified());
 		
@@ -47,6 +46,13 @@ public class BusinessRuleResource {
 		
 		return array.toString();
 		
+	}
+	
+	@POST
+	@Produces("application/json")
+	@Path("{text}")
+	public void doeIets(@PathParam("text") String text) {
+		System.out.println(text);
 	}
 	
 }

@@ -3,14 +3,14 @@ package nl.hu.v2tosad.data.model;
 import java.util.Date;
 
 public class BusinessRule {
-	private int id;
-	private String status;
-	private Date dateModified;
-	private String code;
-	private String businessRuleType;
-	private String rule_Name;
-	private String discription;
-	private String tableName;
+	protected int id;
+	protected String status;
+	protected Date dateModified;
+	protected String code;
+	protected String businessRuleType;
+	protected String rule_Name;
+	protected String discription;
+	protected String tableName;
 	
 	public BusinessRule() {
 	

@@ -1,6 +1,7 @@
 package nl.hu.v2tosad.data.dao;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import nl.hu.v2tosad.data.model.BusinessRule;
 
@@ -19,7 +20,7 @@ public class TargetDAOImpl implements TargetDAO {
 	}
 
 	@Override
-	public void generateConstraint(BusinessRule br) {
+	public void generateConstraint(ArrayList<BusinessRule> rules) {
 		// TODO Auto-generated method stub
 		
 	}

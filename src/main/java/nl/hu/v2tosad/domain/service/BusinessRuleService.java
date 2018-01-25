@@ -14,12 +14,13 @@ public class BusinessRuleService implements ApplicationService {
 	private TargetDAO target;
 	
 	//TODO
-//	public String getRuleDetails() {
-//		
-//	}
+	public void getRuleDetails(int id) {
+		allRules.add(repo.getBusinessRule(id));
+		target.generateConstraint(allRules);
+	}
 	
 	//TODO
-	public void generateCode(BusinessRule br) {
+	public void generateCode(ArrayList<BusinessRule> br) {
 		this.target.generateConstraint(br);
 	}
 	

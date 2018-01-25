@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import nl.hu.v2tosad.data.model.AttributeRangeRule;
 import nl.hu.v2tosad.data.model.BusinessRule;
 
 public class RepositoryDAO {
@@ -54,8 +55,9 @@ public class RepositoryDAO {
 			String discription;
 			String tableName;
 			System.out.println("");
+			
+			while(rs.next()) {
 
-			while (rs.next()) {
 				idResult = rs.getInt("ID");
 				status = rs.getString("STATUS");
 				dateModified = rs.getDate("DATEMODIFIED");
@@ -65,7 +67,14 @@ public class RepositoryDAO {
 				discription = rs.getString("DISCRIPTION");
 				tableName = rs.getString("tableName");
 				
-				br = new BusinessRule(id, status, dateModified, code, businessRuleType, rule_Name, discription, tableName);
+				br = new BusinessRule(idResult, status, dateModified, code, businessRuleType, rule_Name, discription, tableName);
+			}
+			
+			if (br.getBusinessRuleType().equals("Attribute Range Rule")) {
+				rs = stmt.executeQuery("SELECT * FROM RANGE_RULE WHERE FK_BUSINESSRULE_ID = " + br.getId());
+				while(rs.next()) {
+					br = new AttributeRangeRule(br, rs.getInt("RANGERULE_ID"), rs.getInt("MINVAL"), rs.getInt("MAXVAL"), rs.getString("OPERATORVALUE"), rs.getString("COLUMNNAME"));
+				}
 			}
 			
 //			if (br.getId() == 0) {
